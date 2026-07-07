@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MOM Learn is an educational web app for learning Plasmodium falciparum morphology and malaria staging classification." />
+    <title>MOM Learn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MOM Learn</p>
+        <h1>Learn malaria microscopy by practice.</h1>
+        <p class="lead">A lightweight training site for <em>Plasmodium falciparum</em> blood-stage morphology and drug-exposure patterns.</p>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-view="home">Home</button>
+        <button class="nav-btn" data-view="atlas">Atlas</button>
+        <button class="nav-btn" data-view="quiz">Quiz</button>
+        <button class="nav-btn" data-view="progress">Progress</button>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section id="home" class="view active">
+        <div class="hero card">
+          <div>
+            <h2>Interactive training for students and laboratory staff</h2>
+            <p>
+              Browse curated examples, test your eye with quiz mode, and review the key morphological clues for ring,
+              trophozoite, schizont, artesunate-exposed, and quinine-exposed parasites.
+            </p>
+            <div class="hero-actions">
+              <button class="primary" data-goto="atlas">Explore Atlas</button>
+              <button class="secondary" data-goto="quiz">Start Quiz</button>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><span id="stat-images">8,708+</span><small>annotated images</small></div>
+            <div class="stat"><span>5</span><small>training classes</small></div>
+            <div class="stat"><span>2</span><small>drug phenotypes</small></div>
+            <div class="stat"><span>Mobile</span><small>friendly layout</small></div>
+          </div>
+        </div>
+
+        <div class="grid two-up">
+          <article class="card panel">
+            <h3>What learners can do</h3>
+            <ul class="checklist">
+              <li>Review exemplar morphology with short explanations.</li>
+              <li>Practice classifying one image at a time.</li>
+              <li>See the expert label immediately after answering.</li>
+              <li>Track accuracy over time in the browser.</li>
+            </ul>
+          </article>
+
+          <article class="card panel">
+            <h3>Recommended first release</h3>
+            <p>
+              Keep the first version simple: atlas, quiz, and progress. You can later connect it to image search,
+              instructor accounts, or AI feedback.
+            </p>
+            <div class="badge-row">
+              <span class="badge">Atlas</span>
+              <span class="badge">Quiz</span>
+              <span class="badge">Feedback</span>
+              <span class="badge">Progress</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="atlas" class="view">
+        <div class="section-head">
+          <div>
+            <h2>Morphology Atlas</h2>
+            <p>Filter the training examples by class and review the summary notes.</p>
+          </div>
+          <div class="filters" id="filters"></div>
+        </div>
+        <div id="atlas-grid" class="atlas-grid"></div>
+      </section>
+
+      <section id="quiz" class="view">
+        <div class="quiz-layout">
+          <article class="card quiz-card">
+            <div class="quiz-topline">
+              <span id="quiz-progress">Question 1 of 10</span>
+              <span id="quiz-score">Score 0</span>
+            </div>
+            <img id="quiz-image" class="quiz-image" alt="Quiz image" />
+            <h3 id="quiz-title"></h3>
+            <p id="quiz-hint" class="muted"></p>
+            <div id="quiz-options" class="options"></div>
+            <div id="quiz-result" class="result hidden"></div>
+            <div class="hero-actions">
+              <button class="primary" id="submit-answer">Submit</button>
+              <button class="secondary" id="next-question">Next</button>
+            </div>
+          </article>
+
+          <aside class="card panel">
+            <h3>How quiz mode works</h3>
+            <ol class="steps">
+              <li>Look closely at the parasite morphology.</li>
+              <li>Choose the best class.</li>
+              <li>Reveal the expert label and short rationale.</li>
+            </ol>
+            <p class="muted">
+              The current version uses in-browser data so it can run on GitHub Pages without a backend.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="progress" class="view">
+        <div class="grid two-up">
+          <article class="card panel">
+            <h2>Progress</h2>
+            <p class="muted">Saved locally in your browser.</p>
+            <div class="progress-box">
+              <div><span id="attempts">0</span><small>attempts</small></div>
+              <div><span id="accuracy">0%</span><small>accuracy</small></div>
+              <div><span id="best-streak">0</span><small>best streak</small></div>
+            </div>
+            <button class="secondary" id="reset-progress">Reset progress</button>
+          </article>
+          <article class="card panel">
+            <h3>Notes for later</h3>
+            <p>
+              When you are ready, you can swap the placeholder image data with your real MOM images and connect a model
+              inference API if you want AI feedback.
+            </p>
+            <p>
+              For GitHub Pages, keep the first release static. That makes deployment simple and reliable.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Educational use only. Not for clinical diagnosis.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
